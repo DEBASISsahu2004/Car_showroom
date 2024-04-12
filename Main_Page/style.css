@@ -53,7 +53,7 @@ svg{
 .nav_container{
     position: fixed;
     top: 0;
-    z-index: 10;
+    z-index: 30;
     width: 100vw;
     height: 60px;
     padding: 0 24px;
@@ -496,7 +496,7 @@ main, footer{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 2vw;
+    margin: 1vw;
 }
 
 .footer_container .row1 svg{
@@ -549,118 +549,320 @@ main, footer{
     fill: #e410cc;
 }
 
-/* .form_container{
-    position: absolute;
-    top: 0;
-    left: 0;
-    backdrop-filter: blur(10px);
+hr{
+    border-color: var(--primary_color_2);
+    width: 100%;
+}
+
+.overlays{
+    position: fixed;
     width: 100vw;
     height: 100vh;
-} */
-
-/* .form_main {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    background-color: #240046;
-    width: 360px;
-    height: 400px;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 7px 7px 10px 3px #24004628;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    display: none;
+    top: 0;
+    left: 0;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 24px;
-} */
-
-/*checkbox to switch from sign up to login*/
-/* #chk {
+.detailContainer{
+    position: absolute;
+    left: 50%;
+    top: 53%;
+    transform: translate(-50%, -50%) scale(0); 
     display: none;
-} */
+    transition: transform 0.4s;
+    background-color: var(--tertiary_color_1);
+    color: var(--primary_color_2);
+    padding: 1em 2em;
+    width: 28em;
+    height: 38em;
+    z-index: 13;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+}
 
-/*Login*/
-/* .login {
-    position: relative;
+
+.detailContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.detailContainer img{
+    object-fit: fill;
+    border-radius: 8px;
+}
+
+.detailContainer .row1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+.detailContainer .row1 svg{
+    fill: var(--primary_color_2);
+    width: 1.6em;
+    cursor: pointer;
+}
+
+.detailContainer .row1 svg:hover, .wishlistContainer .row1 .wishlistCancel svg:hover{
+    transform: rotate(90deg);
+}
+
+.detailContainer .row2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.detailContainer .row2 .subImage{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.detailContainer .row2 .mainImage{
+    width: 100%;
+    height: 16em;
+}
+
+.detailContainer .row2 .mainImage img{
     width: 100%;
     height: 100%;
-}
-
-.login label {
-    margin: 1% 0 5% 0;
-}
-
-label {
-    color: #fff;
-    font-size: 2rem;
-    justify-content: center;
-    display: flex;
-    font-weight: bold;
     cursor: pointer;
-    transition: .5s ease-in-out;
-} */
+}
 
-/* .input {
+.detailContainer .row2 .subImage .subdiv{
+    background-color: black;
+    width: 23%;
+    height: 4.4em;
+    border-radius: 8px;
+}
+
+.detailContainer .row2 .subImage img{
     width: 100%;
-    height: 40px;
-    background: #e0dede;
-    padding: 10px;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-} */
-
-/*Register*/
-/* .register {
-    background: #eee;
-    border-radius: 40% / 10%;
-    transform: translateY(5%);
-    transition: .8s ease-in-out;
-}
-
-.register label {
-    color: #573b8a;
-    transform: scale(.6);
-}
-
-#chk:checked~.register {
-    transform: translateY(-70%);
-}
-
-#chk:checked~.register label {
-    transform: scale(1);
-    margin: 5% 0 5% 0;
-}
-
-#chk:checked~.login label {
-    transform: scale(.6);
-    margin: 1% 0 12% 0;
-} */
-
-/*Button*/
-/* .form button {
-    width: 85%;
-    height: 40px;
-    margin: 12px auto 10%;
-    color: #fff;
-    background: #573b8a;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
+    height: 100%;
+    object-fit: fill;
+    opacity: 0.6;
     cursor: pointer;
-    transition: .2s ease-in;
 }
 
-.form button:hover {
-    background-color: #6d44b8;
-} */
+.detailContainer .row2 .subImage img:hover{
+    opacity: 1;
+}
+
+.detailContainer .row3{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 1em;
+    font-size: 0.7em;
+}
+
+.detailContainer .row3 .specification{
+    padding: 0.5em 0.5em;
+}
+
+.detailContainer .row3 span{
+    font-weight: 600;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+.detailContainer .row3 .info{
+    padding-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.detailContainer .row3 .rating svg{
+    width: 2.3em;
+    fill: gold;
+    font-size: 0.8em;
+}
+
+.detailContainer .row3 .addButton{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.detailContainer .row3 .addButton button{
+    letter-spacing: 1px;
+    border-radius: 20px;
+    padding: 0.5em 1em;
+    border: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-color: var(--primary_color_1);
+    color: var(--primary_color_2);
+    cursor: pointer;
+}
+
+.detailContainer .row3 .addButton button::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary_color_2);
+    top: 0;
+    left: -101%;
+    transition: all 0.5s;
+    z-index: -1;
+}
+
+.detailContainer .row3 .addButton button:hover{
+    color: var(--primary_color_1);
+}
+
+.detailContainer .row3 .addButton button:hover::before{
+    left: 0;
+}
+
+.detailContainer .row3 .addButton button:active{
+    transform: scale(0.8);
+}
+
+.detailContainer .row4{
+    position: absolute;
+    bottom: -38px;
+    left: -2px;
+    font-weight: 900;
+    z-index: -2;
+    letter-spacing: -3px;
+}
+
+.detailContainer .row4 p{
+    font-style: italic;
+    color: rgb(121, 121, 121);
+    opacity: 0.2;
+    font-size: 5.1em;
+}
+
+.wishlistContainer{
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); 
+    display: none;
+    transition: transform 0.4s;
+    width: 30em;
+    height: 36em;
+    background-color: var(--tertiary_color_1);
+    color: var(--primary_color_2);
+    padding: 1em 1.5em;
+    letter-spacing: 1px;
+    border-radius: 15px;
+    z-index: 13;
+    overflow: hidden;
+}
+
+.wishlistContainer svg{
+    width: 1.6em;
+    fill: var(--primary_color_2);
+}
+
+.wishlistContainer .row1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 1em;
+}
+
+.wishlistContainer .row1 h2{
+    font-size: 1em;
+}
+
+.wishlistContainer .row1 .wishlistCancel{
+    position: absolute;
+    right: 1.5em;
+    z-index: 45;
+}
+
+.wishlistContainer .row2{
+    margin: 0.5em 0;
+    width: 100%;
+    height: 88%;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.wishlistContainer .row2 .wishlistItem{
+    position: relative;
+    font-weight: 600;
+    background-color: var(--primary_color_1);
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 0.3em;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin-bottom: 0.2em;
+    transform: scale(1);
+}
+
+.wishlistContainer .row2 .wishlistItem .imageContainer{
+    width: 35%;
+    height: auto;
+}
+
+.wishlistContainer .row2 .wishlistItem img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.wishlistContainer .row2 .wishlistItem .itemDetail{
+    width: 60%;
+    padding-top: 0.5em;
+    line-height: 1.5em;
+}
+
+.wishlistContainer .row2 .functionality{
+    margin: 0.5em auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.wishlistContainer .row2 svg:hover{
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.wishlistContainer .row2 svg:active{
+    transform: scale(0.9);
+}
+
+.wishlistContainer .row3{
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    color: rgb(121, 121, 121);
+    opacity: 0.2;
+    font-size: 5.22em;
+    font-weight: 800;
+    font-style: italic;
+    z-index: -1;
+}
 
 @keyframes next1{
     from{
@@ -702,6 +904,18 @@ label {
     .items img{
         border-radius: 8px;
         margin-bottom: 1em;
+    }
+
+    .cardetailContainer{
+        font-size: 14px;
+    }
+    
+    .cardetailContainer .row3{
+        font-size: 0.7em;
+    }
+
+    .cardetailContainer .row3 .addButton button{
+        padding: 0.5em 3em;
     }
 }
 
@@ -831,6 +1045,11 @@ label {
         border-radius: 8px;
         margin-bottom: 0.8em;
     }
+
+    .cardetailContainer{
+        font-size: 12px;
+    }
+    
 }
 
 @media (max-width: 480px){
@@ -849,6 +1068,10 @@ label {
 
     .footer_container{
         font-size: 9px;
+    }
+
+    .cardetailContainer{
+        font-size: 10px;
     }
 }
 

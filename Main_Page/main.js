@@ -236,7 +236,7 @@ document.querySelector('.down_arrow').addEventListener('click', () => {
 let ferrari = [
     {
         id: 1,
-        price: 75000000,
+        price: 7.59,
         rating: 4,
         name: 'SF90 Stradale',
         image1: '/Car_showroom/Images/Ferrari/SF90_image1.webp',
@@ -255,7 +255,7 @@ let ferrari = [
     {
         id: 2,
         name: 'Purosangue',
-        price: 50000000,
+        price: 5.25,
         rating: 4,
         image1: '/Car_showroom/Images/Ferrari/Purosangue_image1.webp',
         image2: '/Car_showroom/Images/Ferrari/Purosangue_image2.webp',
@@ -273,13 +273,13 @@ let ferrari = [
     {
         id: 3,
         name: 'F8 Tributo',
-        price: 40200000,
+        price: 4.02,
         rating: 4,
         image1: '/Car_showroom/Images/Ferrari/F8_Tributo_image1.webp',
         image2: '/Car_showroom/Images/Ferrari/F8_Tributo_image2.webp',
-        image3: '/Car_showroom/Images/Ferrari/F8_Tributo_image3.webp',
+        image3: '/Car_showroom/Images/Ferrari/F8_Tributo_image3.jpg',
         image4: '/Car_showroom/Images/Ferrari/F8_Tributo_image4.webp',
-        image5: '/Car_showroom/Images/Ferrari/F8_Tributo_image5.webp',
+        image5: '/Car_showroom/Images/Ferrari/F8_Tributo_image5.jpg',
         fuel: 'Petrol',
         cylinder: 'V8',
         engine: '3902cc',
@@ -291,7 +291,7 @@ let ferrari = [
     {
         id: 4,
         name: '812 GTS',
-        price: 57500000,
+        price: 5.75,
         rating: 4,
         image1: '/Car_showroom/Images/Ferrari/812_image1.webp',
         image2: '/Car_showroom/Images/Ferrari/812_image2.webp',
@@ -309,7 +309,7 @@ let ferrari = [
     {
         id: 5,
         name: 'Monza SP1',
-        price: 33000000,
+        price: 3.35,
         rating: 4,
         image1: '/Car_showroom/Images/Ferrari/manzaSP1_image1.webp',
         image2: '/Car_showroom/Images/Ferrari/manzaSP1_image2.webp',
@@ -326,18 +326,10 @@ let ferrari = [
     }
 ];
 
-// let element = document.querySelector('.item_container.item2');
-
-// if (element.classList.contains('item2')) {
-//     console.log('The element has the class item2');
-// } else {
-//     console.log('The element does not have the class item2');
-// }
-
 let astonMartin = [
     {
         id: 1,
-        price: 45900000,
+        price: 4.59,
         rating: 4,
         name: 'DB12',
         image1: '/Car_showroom/Images/Aston_martin/DB12_image1.webp',
@@ -356,7 +348,7 @@ let astonMartin = [
     {
         id: 2,
         name: 'DBS Superleggera',
-        price: 50000000,
+        price: 5.36,
         rating: 4,
         image1: '/Car_showroom/Images/Aston_martin/DBS_image1.webp',
         image2: '/Car_showroom/Images/Aston_martin/DBS_image2.webp',
@@ -374,7 +366,7 @@ let astonMartin = [
     {
         id: 3,
         name: 'DBX 707',
-        price: 46300000,
+        price: 4.63,
         rating: 4,
         image1: '/Car_showroom/Images/Aston_martin/DBX_image1.webp',
         image2: '/Car_showroom/Images/Aston_martin/DBX_image2.webp',
@@ -392,7 +384,7 @@ let astonMartin = [
     {
         id: 4,
         name: 'Vantage 2024',
-        price: 42600000,
+        price: 4.26,
         rating: 4,
         image1: '/Car_showroom/Images/Aston_martin/Vantage_image1.jpg',
         image2: '/Car_showroom/Images/Aston_martin/Vantage_image2.jpg',
@@ -410,7 +402,7 @@ let astonMartin = [
     {
         id: 5,
         name: 'Valkyrie',
-        price: 55800000,
+        price: 5.58,
         rating: 4,
         image1: '/Car_showroom/Images/Aston_martin/Valkyrie_image1.webp',
         image2: '/Car_showroom/Images/Aston_martin/Valkyrie_image2.webp',
@@ -532,13 +524,17 @@ const prod_loader=(products,html_ele, brand)=>{
     let html = '';
     for(let i=0; i<products.length; i++){
         let product = products[i];
+        let rs = '';
+        if(brand === 'ferrari' || brand === 'astonMartin'){
+            rs = 'cr'
+        }
         html += `
         <div class="items ${brand}" id="${product.id}">
             <div class="image_container">
                 <img src="${product.image1}" alt="${product.name}">
             </div>
             <p class="productName">${product.name}</p>
-            <p>Rs. ${product.price}</p>
+            <p>Rs. ${product.price} ${rs}</p>
             <button>View More</button>
         </div>
         `;
@@ -553,3 +549,384 @@ prod_loader(ferrari, item_container1, "ferrari");
 prod_loader(astonMartin, item_container2, "astonMartin");
 prod_loader(merch, item_container3, "merchandise");
 prod_loader(part, item_container4, "parts");
+
+let productImages = document.querySelectorAll('.image_container img');
+
+
+let items = document.querySelectorAll('.items');
+let overlays = document.querySelector('.overlays');
+let checkdetail = 0;
+let checkwishlist = 0;
+
+function overlayOpen(){
+    overlays.style.display = 'block';
+}
+function overlayClose(){
+    setTimeout(() => {
+        overlays.style.display = 'none';
+    }, 400);
+}
+
+function detailoverlayOpen(){
+    if(checkwishlist === 1){
+        wishlistClose();
+    }
+    overlayOpen();
+    checkdetail = 1;
+    let detail = document.querySelector('.detailContainer');
+    detail.style.display = 'block';
+    setTimeout(() => {
+        detail.style.transform = 'translate(-50%, -50%) scale(1)';
+    }, 0);
+}
+function detailoverlayClose(){
+    overlayClose();
+    checkdetail = 0;
+    let detail = document.querySelector('.detailContainer');
+    setTimeout(() => {
+        detail.style.transform = 'translate(-50%, -50%) scale(0)';
+    }, 0);
+    setTimeout(() => {
+        detail.style.display = 'none';
+    }, 400);
+}
+
+function wishlistOpen(){
+    if(checkdetail === 1){
+        detailoverlayClose();
+    }
+    overlayOpen();
+    checkwishlist = 1;
+    let wishlistContainer = document.querySelector('.wishlistContainer');
+    wishlistContainer.style.display = 'block';
+    setTimeout(() => {
+        wishlistContainer.style.transform = 'translate(-50%, -50%) scale(1)';
+    }, 0);
+}
+function wishlistClose(){
+    overlayClose();
+    checkwishlist = 0;
+    let wishlistContainer = document.querySelector('.wishlistContainer');
+    setTimeout(() => {
+        wishlistContainer.style.transform = 'translate(-50%, -50%) scale(0)';
+    }, 0);
+    setTimeout(() => {
+        wishlistContainer.style.display = 'none';
+    }, 400);
+}
+let wishlist = document.querySelector('.wishlist_logo');
+wishlist.addEventListener('click', function(){
+    console.log('clicked');
+    wishlistOpen();
+});
+let wishlistcancel = document.querySelector('.wishlistCancel');
+wishlistcancel.addEventListener('click', function(){
+    console.log('working');
+    wishlistClose();
+});
+
+let alertDialog = document.createElement('div');
+alertDialog.style.position = 'fixed';
+alertDialog.style.top = '100px';
+alertDialog.style.backgroundColor = 'rgb(16, 213, 16)';
+alertDialog.style.padding = '10px 20px';
+alertDialog.style.borderRadius = '10px';
+alertDialog.style.fontFamily = "'Poppins', sans-serif";
+alertDialog.style.fontWeight = '600';
+alertDialog.style.boxShadow = '0px 0px 20px black';
+alertDialog.style.border = 'none';
+alertDialog.style.zIndex = '1000';
+alertDialog.style.right = '10px'; // Position the alert dialog on the right
+alertDialog.style.transform = 'translateX(100%)'; // Initially move the alert dialog out of the screen to the right
+alertDialog.style.transition = 'transform 0.5s'; // Add a smooth transition effect to the alert dialog
+alertDialog.style.display = 'none'; // Hide the alert dialog by default
+document.body.appendChild(alertDialog); // Add the alert dialog to the body
+
+// Function to show the alert dialog
+function showAlert(message) {
+    alertDialog.textContent = message; // Set the alert message
+    alertDialog.style.display = 'block'; // Show the alert dialog
+    setTimeout(() => {
+        alertDialog.style.transform = 'translateX(0)'; // Animate the alert dialog to appear from the right
+    }, 0);
+    setTimeout(hideAlert, 1500);
+}
+
+// Function to hide the alert dialog
+function hideAlert() {
+    alertDialog.style.transform = 'translateX(120%)'; // Move the alert dialog out of the screen to the right
+    setTimeout(() => {
+        alertDialog.style.display = 'none'; // Hide the alert dialog
+    }, 520);
+}
+let wishlistcount = 0;
+items.forEach(item => {
+    item.addEventListener('click', function (event) {
+        let listName = '';
+        if(item.classList.contains("ferrari")){
+            listName = 'ferrari';
+            showModel('ferrari',ferrari, item, overlays);
+        }else if(item.classList.contains("astonMartin")){
+            listName = 'astonMartin';
+            showModel('astonMartin',astonMartin, item, overlays);
+        }else if(item.classList.contains("merchandise")){
+            listName = 'merch';
+            showModel('merchandise', merch, item, overlays);
+        }else{
+            listName = 'part';
+            showModel('parts', part, item, overlays);
+        }
+
+        detailoverlayOpen();
+        let cancel = document.querySelector('.cancel');
+        cancel.addEventListener('click', function(){
+            detailoverlayClose();
+        });
+
+        let subImages = document.querySelectorAll('.subdiv img');
+        let mainImage = document.querySelector('.mainImage img');
+
+        subImages.forEach(subImage => {
+            subImage.addEventListener('click', function(){
+                let src1 = subImage.getAttribute('src');
+                let src2 = mainImage.getAttribute('src');
+                mainImage.setAttribute('src', src1);
+                subImage.setAttribute('src', src2);
+            });
+        });
+
+        let lists = {
+            'ferrari': ferrari,
+            'astonMartin': astonMartin,
+            'merch': merch,
+            'part': part
+        };
+        let list = lists[listName];
+        let b1 = document.querySelector('.b1');
+        b1.addEventListener('click', function(){
+            showAlert('Added to Wishlist');
+            let row2 = document.querySelector('.wishlistContainer .row2');
+            let cur = '';
+            if(list === 'ferrari' || list === 'astonMartin'){
+                cur = 'cr';
+            }
+            wishlistcount++;
+            let html = `
+            <div class="wishlistItem" id="${wishlistcount}">
+                <div class="imageContainer">
+                    <img src="${list[Number(item.id)-1].image1}" alt="${list[Number(item.id)-1].name}">
+                </div>
+                <div class="itemDetail">
+                    <p class="name">${list[Number(item.id)-1].name}</p>
+                    <p class="price">Rs. ${list[Number(item.id)-1].price}${cur}</p>
+                    <div class="functionality">
+                        <svg class="cartSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M6.00488 9H19.9433L20.4433 7H8.00488V5H21.7241C22.2764 5 22.7241 5.44772 22.7241 6C22.7241 6.08176 22.7141 6.16322 22.6942 6.24254L20.1942 16.2425C20.083 16.6877 19.683 17 19.2241 17H5.00488C4.4526 17 4.00488 16.5523 4.00488 16V4H2.00488V2H5.00488C5.55717 2 6.00488 2.44772 6.00488 3V9ZM6.00488 23C4.90031 23 4.00488 22.1046 4.00488 21C4.00488 19.8954 4.90031 19 6.00488 19C7.10945 19 8.00488 19.8954 8.00488 21C8.00488 22.1046 7.10945 23 6.00488 23ZM18.0049 23C16.9003 23 16.0049 22.1046 16.0049 21C16.0049 19.8954 16.9003 19 18.0049 19C19.1095 19 20.0049 19.8954 20.0049 21C20.0049 22.1046 19.1095 23 18.0049 23Z"></path></svg>
+                        <svg class="deleteSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM9 11V17H11V11H9ZM13 11V17H15V11H13ZM9 4V6H15V4H9Z"></path></svg>
+                    </div>
+                </div>
+            </div>
+            `;
+            row2.innerHTML += html;
+
+            let deleteSvgs = document.querySelectorAll('.wishlistContainer .wishlistItem .deleteSvg');
+
+            // deleteSvgs.forEach((deleteSvg, index) => {
+            //     deleteSvg.addEventListener('click', function() {
+            //         let cartItems = document.querySelectorAll('.wishlistContainer .wishlistItem');
+            //         console.log(index);
+            
+            //         cartItems[index].remove();
+            //     });
+            // });
+            deleteSvgs.forEach((deleteSvg) => {
+                deleteSvg.addEventListener('click', function() {
+                    // Traverse up the DOM to find the associated cart item
+                    let wishlistItem = deleteSvg;
+                    while (!wishlistItem.classList.contains('wishlistItem')) {
+                        wishlistItem = wishlistItem.parentElement;
+                    }
+                    console.log(wishlistItem);
+                    // Remove the cart item
+                    wishlistItem.remove();
+                });
+            });
+        });
+    });
+
+    let imageContainer = item.querySelector('.image_container');
+    let stsrc = '';
+    imageContainer.addEventListener('mouseover', function(){
+        stsrc = imageContainer.querySelector('img').getAttribute('src');
+        if(item.classList.contains('ferrari')){
+            imageContainer.querySelector('img').src = ferrari[item.id-1].image2;
+        }else if(item.classList.contains('astonMartin')){
+            imageContainer.querySelector('img').src = astonMartin[item.id-1].image2;
+        }else if(item.classList.contains('merchandise')){
+            imageContainer.querySelector('img').src = merch[item.id-1].image2;
+        }else{
+            imageContainer.querySelector('img').src = part[item.id-1].image2;
+        }
+    });
+    imageContainer.addEventListener('mouseout', function(){
+        imageContainer.querySelector('img').src = stsrc;
+    });
+});
+
+const showModel = (className, listName, item, html_eLe)=>{
+    let wishlistsection = document.querySelector('.wishlistContainer');
+    let html = '';
+    if(className === 'ferrari' || className === 'astonMartin'){
+        let id = Number(item.id);
+        let product = listName[id-1];
+        html += `
+        <section class="detailContainer">
+        <div class="row1">
+            <p class="productName">${product.name}</p>
+            <svg class="cancel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"></path><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg>
+        </div>
+        <div class="row2">
+            <div class="mainImage">
+                <img src="${product.image1}" alt="${product.name}">
+            </div>
+            <div class="subImage">
+                <div class="subdiv">
+                    <img src="${product.image2}" alt="${product.name}">
+                </div>
+                <div class="subdiv">
+                    <img src="${product.image3}" alt="${product.name}">
+                </div>
+                <div class="subdiv">
+                    <img src="${product.image4}" alt="${product.name}">
+                </div>
+                <div class="subdiv">
+                    <img src="${product.image5}" alt="${product.name}">
+                </div>
+            </div>
+        </div>
+        <div class="row3">
+            <div class="specification">
+                <p><span>Price :</span> ${product.price} Cr</p>
+                <p><span>Fuel :</span> ${product.fuel}</p>
+                <p><span>Cylinder :</span> V${product.cylinder}</p>
+                <p><span>Engine :</span> ${product.engine}</p>
+                <p><span>Tank Capacity :</span> ${product.tank_capacity}</p>
+                <p><span>Seats :</span> ${product.seating_capacity}</p>
+                <p><span>Mileage :</span> ${product.mileage}</p>
+                <p><span>Top Speed :</span> ${product.top_speed}</p>
+            </div>
+            <div class="info">
+                <div class="rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                </div>
+                <div class="addButton">
+                    <button class="b1">Wishlist</button>
+                    <button class="b2">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="row4">
+            <p>CARMANIA</p>
+        </div>
+    </section>
+    `;
+    }else if(className === 'merchandise'){
+        let id = Number(item.id);
+        let product = listName[id - 1];
+        html += `
+        <section class="detailContainer">
+        <div class="row1">
+            <p class="productName">${product.name}</p>
+            <svg class="cancel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"></path><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg>
+        </div>
+        <div class="row2">
+            <div class="mainImage">
+                <img src="${product.image1}" alt="${product.name}">
+            </div>
+            <div class="subImage">
+                <div class="subdiv">
+                    <img src="${product.image2}" alt="${product.name}">
+                </div>
+                <div class="subdiv">
+                    <img src="${product.image3}" alt="${product.name}">
+                </div>
+            </div>
+        </div>
+        <div class="row3">
+            <div class="specification">
+                <p><span>Price :</span> ${product.price}</p>
+                <p><span>Description :</span> ${product.description}</p>
+            </div>
+            <div class="info">
+
+                <div class="rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                </div>
+                <div class="addButton">
+                    <button class="b1">Wishlist</button>
+                    <button class="b2">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="row4">
+            <p>CARMANIA</p>
+        </div>
+    </section>
+    `;
+    }else{
+        let id = Number(item.id);
+        let product = listName[id - 1];
+        html += `
+        <section class="detailContainer">
+        <div class="row1">
+            <p class="productName">${product.name}</p>
+            <svg class="cancel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"></path><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg>
+        </div>
+        <div class="row2">
+            <div class="mainImage">
+                <img src="${product.image1}" alt="${product.name}">
+            </div>
+            <div class="subImage">
+                <div class="subdiv">
+                    <img src="${product.image2}" alt="${product.name}">
+                </div>
+            </div>
+        </div>
+        <div class="row3">
+            <div class="specification">
+                <p><span>Price :</span> ${product.price}</p>
+                <p><span>-></span> ${product.description1}</p>
+                <p><span>-></span> ${product.description2}</p>
+                <p><span>-></span> ${product.description3}</p>
+            </div>
+            <div class="info">
+
+                <div class="rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,0,0,1)"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z"></path></svg>
+                </div>
+                <div class="addButton">
+                    <button class="b1">Wishlist</button>
+                    <button class="b2">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="row4">
+            <p>CARMANIA</p>
+        </div>
+    </section>
+    `;
+    }
+    overlays.innerHTML = html;
+    overlays.appendChild(wishlistsection);
+}
