@@ -686,8 +686,12 @@ hr{
 
 .detailContainer .row3 .rating svg{
     width: 2.3em;
-    fill: gold;
+    fill: var(--secondary_color_2);
     font-size: 0.8em;
+}
+
+.detailContainer .row3 .rating svg.filled {
+    fill: gold;
 }
 
 .detailContainer .row3 .addButton{
@@ -864,6 +868,181 @@ hr{
     z-index: -1;
 }
 
+
+.cartContainer{
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: var(--tertiary_color_1);
+    color: var(--primary_color_2);
+    display: none;
+    transition: transform 0.4s ease-in-out;
+    width: 30em;
+    height: 36em;
+    padding: 1em 1.5em;
+    letter-spacing: 1px;
+    border-radius: 15px;
+    z-index: 13;
+    overflow: hidden;
+}
+
+.cartContainer svg{
+    width: 1.6em;
+    fill: var(--primary_color_2);
+}
+
+.cartContainer svg:hover{
+    transform: rotate(90deg);
+}
+
+.cartContainer .row1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 1em;
+}
+
+.cartContainer .row1 .cartCancel{
+    position: absolute;
+    right: 1.5em;
+    z-index: 45;
+}
+
+.cartContainer .row2{
+    margin: 0.5em 0;
+    width: 100%;
+    height: 78%;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.cartContainer .row2 .cartItem{
+    position: relative;
+    font-weight: 600;
+    background-color: var(--primary_color_1);
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 0.3em;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin-bottom: 0.2em;
+    transform: scale(1);
+}
+
+.cartContainer .row2 .cartItem .imageContainer{
+    width: 35%;
+    height: auto;
+}
+
+.cartContainer .row2 .cartItem img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cartContainer .row2 .cartItem .itemDetail{
+    width: 60%;
+    padding-top: 0.5em;
+    line-height: 1.5em;
+}
+
+.cartContainer .row2 .functionality{
+    margin: 0.5em auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cartContainer .row2 svg:hover{
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.cartContainer .row2 svg:active{
+    transform: scale(0.9);
+}
+
+.cartContainer .row3{
+    width: 100%;
+    display: none;
+    margin: 0 auto;
+    /* justify-content: center;
+    align-items: center; */
+    position: relative;
+}
+
+.cartContainer .row3 button{
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary_color_1);
+    border: none;
+    color: var(--primary_color_2);
+    width: 50%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 0 25%;
+    cursor: pointer;
+    border-radius: 10px;
+    /* transition: all 0s ease-in-out;
+    transition: transform 1s ease-in-out; */
+    z-index: 2;
+    padding: 1em 0;
+}
+
+.cartContainer .row3 button::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary_color_2);
+    top: 0;
+    left: -101%;
+    transition: all 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.cartContainer .row3 button:hover{
+    color: var(--primary_color_1);
+}
+
+.cartContainer .row3 button:hover::before{
+    left: 0;    
+}
+
+.cartContainer .row3 button:active{
+    transform: scale(0.8);
+}
+
+.cartContainer .row3 .buyButton{
+    font-weight: 600;
+}
+
+.cartContainer .row3 .totalButton{
+    font-size: 0.8em;
+}
+
+.cartContainer .row4{
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    color: rgb(121, 121, 121);
+    opacity: 0.2;
+    font-size: 5.22em;
+    font-weight: 800;
+    font-style: italic;
+    z-index: -1;
+}
+
 @keyframes next1{
     from{
         left: 0%;
@@ -904,18 +1083,6 @@ hr{
     .items img{
         border-radius: 8px;
         margin-bottom: 1em;
-    }
-
-    .cardetailContainer{
-        font-size: 14px;
-    }
-    
-    .cardetailContainer .row3{
-        font-size: 0.7em;
-    }
-
-    .cardetailContainer .row3 .addButton button{
-        padding: 0.5em 3em;
     }
 }
 
@@ -1046,10 +1213,6 @@ hr{
         margin-bottom: 0.8em;
     }
 
-    .cardetailContainer{
-        font-size: 12px;
-    }
-    
 }
 
 @media (max-width: 480px){
@@ -1070,9 +1233,6 @@ hr{
         font-size: 9px;
     }
 
-    .cardetailContainer{
-        font-size: 10px;
-    }
 }
 
 @media (max-width: 374px){
