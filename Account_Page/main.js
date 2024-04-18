@@ -33,7 +33,7 @@ loginForm.addEventListener('submit', function(event) {
     // If validation passes, set a flag in local storage and redirect to the main page
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('username', userInput.value);
-    window.location.href = '/Car_showroom/Main_Page/index.html';
+    window.location.href = '/Car_showroom/index.html';
 });
 
 // Select the login button and add a click event listener
@@ -84,7 +84,7 @@ registerForm.addEventListener('submit', function(event) {
     // If validation passes, set a flag in local storage and redirect to the main page
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('username', userInput.value);
-    window.location.href = '/Car_showroom/Main_Page/index.html';
+    window.location.href = '/Car_showroom/index.html';
 });
 
 // Initialize an array to keep track of the visibility state of password fields
