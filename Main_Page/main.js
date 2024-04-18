@@ -186,6 +186,12 @@ function moveImage() {
     let window_size = window.innerWidth;
     let image = document.querySelector('.moving_image');
     let new_left = window_size - 1.5*window.scrollY;
+    if(window_size < 768){
+        new_left = window_size - 1.2*window.scrollY;
+    }
+    if(window_size < 575){
+        new_left = window_size - 0.7*window.scrollY;
+    }
     document.documentElement.style.setProperty('--moving_left', new_left + 'px');
     if (new_left <= -600 || new_left >= window_size) {
         image.style.display = 'none';
@@ -1129,7 +1135,7 @@ const showModel = (className, id)=>{
                     </div>
                     <div class="addButton">
                         <button class="b1" id="${product.uid}" >Wishlist</button>
-                        <button class="b2" id="${product.uid}" >Add to cart</button>
+                        <button class="b2" id="${product.uid}" >Cart</button>
                     </div>
                 </div>
             </div>
@@ -1149,15 +1155,15 @@ const showModel = (className, id)=>{
 }
 
 function log(){
-    let navQuote = document.querySelector('.nav_quote p');
+    let navQuote = document.querySelector('.brand_name p');
     if (localStorage.getItem('isLoggedIn') === 'true') {
         console.log('User has logged in successfully');
         localStorage.setItem('isLoggedIn', 'false');
-        navQuote.innerHTML = `Hello ${localStorage.getItem('username')}!!!`;
+        navQuote.innerHTML = `Hello <span>${localStorage.getItem('username')}</span>`;
         signup.innerHTML = 'Log out';
     } else {
         signup.innerHTML = 'Log in';
-        navQuote.innerHTML = `The World Of Cars`;
+        navQuote.innerHTML = `<span>C</span>ar<span>M</span>ania`;
         console.log('User has not logged in');
     }
 }

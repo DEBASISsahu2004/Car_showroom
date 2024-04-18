@@ -5,7 +5,7 @@
  */
 
 /* URL to get the desired font family */
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Wet+Paint&family=Zen+Dots&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zen+Dots&display=swap');
 
 @keyframes moveUpDown {
     0%, 100% {
@@ -29,6 +29,7 @@ body{
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
+    font-size: 18px;
 }
 
 :root{
@@ -47,13 +48,13 @@ body{
 }
 
 svg{
-    width: 26px;
+    width: 1.4em;
 }
 
 .nav_container{
     position: fixed;
     top: 0;
-    z-index: 30;
+    z-index: 5;
     width: 100vw;
     height: 60px;
     padding: 0 24px;
@@ -62,14 +63,14 @@ svg{
     justify-content: space-between;
     background-color: var(--primary_color_1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.407);
+    user-select: none;
 }
 
 .brand_name p{
-    font-size: 30px;
-    user-select: none;
+    font-size: 1.6em;
     letter-spacing: 1px;
     color: var(--primary_color_2);
-    font-family: "Rubik Wet Paint", system-ui;
+    font-family: "Zen Dots", sans-serif;
 }
 
 .brand_name p span{
@@ -77,10 +78,9 @@ svg{
 }
 
 .nav_quote p{
-    font-size: 26px;
+    font-size: 1.4em;
     font-weight: 700;
     letter-spacing: 2px;
-    user-select: none;
     color: var(--primary_color_2);
     font-family: "Kanit", sans-serif;
 }
@@ -164,7 +164,7 @@ svg{
 .menu_container .menu ul li p{
     user-select: none;
     color: var(--primary_color_2);
-    font-size: 15px;
+    font-size: 0.9em;
     letter-spacing: 1px;
     font-family: "Zen Dots", sans-serif;
 }
@@ -222,15 +222,14 @@ main, footer{
 }
 
 .video_container p{
-    margin-bottom: 1vw;
-    font-size: 3vw;
+    margin-bottom: 0.3em;
+    font-size: 2em;
     font-weight: 600;
-
 }
 
 .video_container svg{
-    width: 40px;
-    margin-bottom: 3vw;
+    width: 2.5em;
+    margin-bottom: 1.5em;
     animation: moveUpDown 2s linear infinite;
     cursor: pointer;
 }
@@ -238,10 +237,11 @@ main, footer{
 .greeting_container{
     position: relative;
     width: 100vw;
-    height: 32vw;
+    height: 25em;
     display: flex;
     align-items: center;
     flex-direction: column;
+    user-select: none;
 }
 
 .greeting_container video{
@@ -263,47 +263,41 @@ main, footer{
     flex-direction: column;
     letter-spacing: 1px;
     z-index: 1;
-    margin: 4vw 0 4.4vw 0;
-    user-select: none;
+    margin: 4vw 0;
 }
 
 .greeting_container .text_container h1{
-    font-size: 2vw;
+    font-size: 1.5em;
     color: var(--brand_color_1);
 }
 
 .greeting_container .text_container p{
-    font-size: 1.3vw;
+    font-size: 1em;
     color: white;
     text-align:center;
 }
 
 .greeting_container .moving_image_container .moving_image{
-    width: 40vw;
+    width: 35em;
     position: absolute;
-    bottom: 1vw;
+    bottom: 0;
     left: var(--moving_left);
     display: none;
-
 }
 
 .heading{
     color: var(--primary_color_2);
     text-align: center;
-    margin: 0 0 2vw 0;
-}
-
-.head{
-    margin: 3vw 0 2vw 0;
+    font-size: 1.5em;
+    margin: 1em 0 1em 0;
 }
 
 #productSection{
-    padding-top: 64px;
+    padding-top: 2em;
 }
 
 .bulletin_container{
     display: flex;
-    margin: 0vw 2vw;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -477,7 +471,6 @@ main, footer{
     align-items: center;
     flex-direction: column;
     padding: 0 3vw;
-    font-size: 18px;
     color: var(--primary_color_2);
     transition: all 0.3s ease-in-out;
 }
@@ -559,12 +552,12 @@ hr{
     width: 100vw;
     height: 100vh;
     backdrop-filter: blur(10px);
-    z-index: 10;
+    z-index: 2;
     display: none;
     top: 0;
     left: 0;
-    font-size: 18px;
     font-family: 'Poppins', sans-serif;
+    user-select: none;
 }
 
 .detailContainer{
@@ -579,12 +572,11 @@ hr{
     padding: 1em 2em;
     width: 28em;
     height: 38em;
-    z-index: 13;
+    z-index: 2;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 0 20px black;
 }
-
 
 .detailContainer::-webkit-scrollbar {
     display: none;
@@ -609,7 +601,7 @@ hr{
     cursor: pointer;
 }
 
-.detailContainer .row1 svg:hover, .wishlistContainer .row1 .wishlistCancel svg:hover{
+.detailContainer .row1 svg:hover{
     transform: rotate(90deg);
 }
 
@@ -755,13 +747,13 @@ hr{
     font-size: 5.1em;
 }
 
-.wishlistContainer{
+.wishlistContainer, .cartContainer{
     position: absolute;
     top: 52%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0); 
     display: none;
-    transition: transform 0.4s;
+    transition: transform 0.4s ease-in-out;
     width: 30em;
     height: 36em;
     background-color: var(--tertiary_color_1);
@@ -769,16 +761,20 @@ hr{
     padding: 1em 1.5em;
     letter-spacing: 1px;
     border-radius: 15px;
-    z-index: 13;
+    z-index: 2;
     overflow: hidden;
 }
 
-.wishlistContainer svg{
+.wishlistContainer .row1 svg, .cartContainer .row1 svg{
     width: 1.6em;
     fill: var(--primary_color_2);
 }
 
-.wishlistContainer .row1{
+.wishlistContainer .row1 svg:hover, .cartContainer .row1 svg:hover{
+    transform: rotate(90deg);
+}
+
+.wishlistContainer .row1, .cartContainer .row1{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -787,14 +783,9 @@ hr{
     font-size: 1em;
 }
 
-.wishlistContainer .row1 h2{
-    font-size: 1em;
-}
-
-.wishlistContainer .row1 .wishlistCancel{
+.wishlistContainer .row1 .wishlistCancel, .cartContainer .row1 .cartCancel{
     position: absolute;
     right: 1.5em;
-    z-index: 45;
 }
 
 .wishlistContainer .row2{
@@ -805,7 +796,7 @@ hr{
     scrollbar-width: none;
 }
 
-.wishlistContainer .row2 .wishlistItem{
+.wishlistContainer .row2 .wishlistItem, .cartContainer .row2 .cartItem{
     position: relative;
     font-weight: 600;
     background-color: var(--primary_color_1);
@@ -820,25 +811,25 @@ hr{
     transform: scale(1);
 }
 
-.wishlistContainer .row2 .wishlistItem .imageContainer{
+.wishlistContainer .row2 .wishlistItem .imageContainer, .cartContainer .row2 .cartItem .imageContainer{
     width: 35%;
     height: auto;
 }
 
-.wishlistContainer .row2 .wishlistItem img{
+.wishlistContainer .row2 .wishlistItem img, .cartContainer .row2 .cartItem img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
 }
 
-.wishlistContainer .row2 .wishlistItem .itemDetail{
+.wishlistContainer .row2 .wishlistItem .itemDetail, .cartContainer .row2 .cartItem .itemDetail{
     width: 60%;
     padding-top: 0.5em;
     line-height: 1.5em;
 }
 
-.wishlistContainer .row2 .functionality{
+.wishlistContainer .row2 .functionality, .cartContainer .row2 .functionality{
     margin: 0.5em auto;
     width: 50%;
     display: flex;
@@ -846,17 +837,17 @@ hr{
     align-items: center;
 }
 
-.wishlistContainer .row2 svg:hover{
+.wishlistContainer .row2 svg:hover, .cartContainer .row2 svg:hover{
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     transform: scale(1.1);
 }
 
-.wishlistContainer .row2 svg:active{
+.wishlistContainer .row2 svg:active, .cartContainer .row2 svg:active{
     transform: scale(0.9);
 }
 
-.wishlistContainer .row3{
+.wishlistContainer .row3, .cartContainer .row4{
     position: absolute;
     bottom: -40px;
     left: 0;
@@ -868,49 +859,6 @@ hr{
     z-index: -1;
 }
 
-
-.cartContainer{
-    position: absolute;
-    top: 52%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    background-color: var(--tertiary_color_1);
-    color: var(--primary_color_2);
-    display: none;
-    transition: transform 0.4s ease-in-out;
-    width: 30em;
-    height: 36em;
-    padding: 1em 1.5em;
-    letter-spacing: 1px;
-    border-radius: 15px;
-    z-index: 13;
-    overflow: hidden;
-}
-
-.cartContainer svg{
-    width: 1.6em;
-    fill: var(--primary_color_2);
-}
-
-.cartContainer svg:hover{
-    transform: rotate(90deg);
-}
-
-.cartContainer .row1{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.3em;
-    font-size: 1em;
-}
-
-.cartContainer .row1 .cartCancel{
-    position: absolute;
-    right: 1.5em;
-    z-index: 45;
-}
-
 .cartContainer .row2{
     margin: 0.5em 0;
     width: 100%;
@@ -919,63 +867,9 @@ hr{
     scrollbar-width: none;
 }
 
-.cartContainer .row2 .cartItem{
-    position: relative;
-    font-weight: 600;
-    background-color: var(--primary_color_1);
-    width: 100%;
-    height: auto;
-    display: flex;
-    padding: 0.3em;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 10px;
-    margin-bottom: 0.2em;
-    transform: scale(1);
-}
-
-.cartContainer .row2 .cartItem .imageContainer{
-    width: 35%;
-    height: auto;
-}
-
-.cartContainer .row2 .cartItem img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.cartContainer .row2 .cartItem .itemDetail{
-    width: 60%;
-    padding-top: 0.5em;
-    line-height: 1.5em;
-}
-
-.cartContainer .row2 .functionality{
-    margin: 0.5em auto;
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.cartContainer .row2 svg:hover{
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-.cartContainer .row2 svg:active{
-    transform: scale(0.9);
-}
-
 .cartContainer .row3{
     width: 100%;
     display: none;
-    margin: 0 auto;
-    /* justify-content: center;
-    align-items: center; */
     position: relative;
 }
 
@@ -986,15 +880,11 @@ hr{
     border: none;
     color: var(--primary_color_2);
     width: 50%;
-    text-align: center;
-    text-decoration: none;
     font-size: 1em;
     line-height: 1.5em;
     margin: 0 25%;
     cursor: pointer;
     border-radius: 10px;
-    /* transition: all 0s ease-in-out;
-    transition: transform 1s ease-in-out; */
     z-index: 2;
     padding: 1em 0;
 }
@@ -1027,22 +917,6 @@ hr{
     font-weight: 600;
 }
 
-.cartContainer .row3 .totalButton{
-    font-size: 0.8em;
-}
-
-.cartContainer .row4{
-    position: absolute;
-    bottom: -40px;
-    left: 0;
-    color: rgb(121, 121, 121);
-    opacity: 0.2;
-    font-size: 5.22em;
-    font-weight: 800;
-    font-style: italic;
-    z-index: -1;
-}
-
 @keyframes next1{
     from{
         left: 0%;
@@ -1061,34 +935,41 @@ hr{
     }
 }
 
-@media (max-width: 1024px){
+@media (max-width: 1150px){
+    .greeting_container{
+        height: 23em;
+    }
+
+    .greeting_container .moving_image_container .moving_image{
+        width: 30em;
+    }
+
     .item_container{
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 4vw;
     }
     
     .items{
         padding: 0.5vw 0.5vw 1vw 0.5vw;
         font-size: 1em;
-        border-radius: 10px;
     }
     
     .items button{
-        margin-top: 1vw;
+        margin-top: 0.5vw;
         padding: 1vw 2vw;
-        border-radius: 20px;
-        font-size: 0.9em;
     }
-    
-    .items img{
-        border-radius: 8px;
-        margin-bottom: 1em;
+
+    .overlays{
+        font-size: 14px;
     }
 }
 
 @media (max-width:768px){
+    body{
+        font-size: 14px;
+    }
+
     svg{
-        width: 22px;
+        width: 1.5em;
     }
     
     .nav_container{
@@ -1097,11 +978,11 @@ hr{
     }
     
     .brand_name p{
-        font-size: 26px;
+        font-size: 1.6em;
     }
     
     .nav_quote p{
-        font-size: 22px;
+        font-size: 1.5em;
     }
     
     .nav_icons{
@@ -1112,7 +993,6 @@ hr{
         width: 36px;
         height: 18px;
         border-radius: 9px;
-        padding: 4px;
     }
     
     .nav_icons .inner_container{
@@ -1131,22 +1011,18 @@ hr{
     .menu_container .menu{
         width: 220px;
         height: 280px;
-        border-radius: 15px;
+        border-radius: 10px;
     }
     
     .menu_container .menu ul li{
-        border-radius: 10px;
+        border-radius: 4px;
         height: 35px;
         margin: 15px 0;
         width: 120px;
     }
     
-    .menu_container .menu ul li p{
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
-    
     .menu_container .menu_cancel{
+        width: 1.5em;
         top: 10px;
         right: 12px;
     }
@@ -1154,103 +1030,206 @@ hr{
     .video_container{
         margin-top: 54px;
     }
-
-    #productSection{
-        padding-top: 58px;
+    
+    .video_container p{
+        margin-bottom: 0.3em;
+        font-size: 2em;
     }
-
-    .footer_container{
-        font-size: 14px;
+    
+    .video_container svg{
+        width: 2.5em;
+        margin-bottom: 1.5em;
     }
 }
 
 @media (max-width: 600px){
+    .nav_container{
+        height: 50px;
+        padding: 0 20px;
+    }
+
+    .menu_container{
+        top: 54px;
+    }
+
+    .video_container{
+        margin-top: 50px;
+    }
+
     .nav_quote p{
         display: none;
     }
-
-    .greeting_container{
-        height: 40vw;
+    
+    .video_container p{
+        font-size: 1.3em;
     }
     
-    .greeting_container .text_container{
-        width: 90vw;
-        margin: 4vw 0 3.4vw 0;
+    .video_container svg{
+        width: 1.8em;
+    }
+
+    .greeting_container{
+        height: 18em;
     }
     
     .greeting_container .text_container h1, .heading{
-        font-size: 4vw;
+        font-size: 1.3em;
     }
     
     .greeting_container .text_container p{
-        font-size: 2vw;
+        font-size: 0.8em;
     }
     
     .greeting_container .moving_image_container .moving_image{
-        width: 50vw;
+        width: 22em; 
     }
 
     .item_container{
         grid-template-columns: 1fr 1fr;
-        gap: 4vw;
     }
     
     .items{
         padding: 0.8vw 0.8vw 2vw 0.8vw;
-        font-size: 0.9em;
+        font-size: 1.3em;
         border-radius: 10px;
     }
     
     .items button{
         margin-top: 1vw;
         padding: 1vw 2vw;
-        border-radius: 20px;
+        border-radius: 10px;
         font-size: 0.9em;
     }
+
+    .heading{
+        margin: 1.2em 0 1em 0;
+    }
     
-    .items img{
-        border-radius: 8px;
-        margin-bottom: 0.8em;
+    .footer_container .title{
+        font-size: 1em;
+    }
+    
+    .footer_container .normalText{
+        font-size: 0.8em;
+    }
+    
+    .footer_container .row1 svg{
+        width: 2.6em;
     }
 
+    .detailContainer{
+        width: 20em;
+        height: 34em;
+        padding: 1em 1em;
+    }
+
+    .detailContainer .row2 .mainImage{
+        height: 12em;
+    }
+    
+    .detailContainer .row2 .subImage .subdiv{
+        background-color: black;
+        width: 22%;
+        height: 3em;
+    }
+    
+    .detailContainer .row3{
+        font-size: 0.8em;
+    }
+    
+    .detailContainer .row3 span{
+        font-size: 1em;
+    }
+    
+    .detailContainer .row3 .rating svg{
+        width: 1.6em;
+    }
+    
+    .detailContainer .row3 .addButton button{
+        border-radius: 10px;
+        padding: 0.5em 1em;
+        font-size: 1em;
+    }
+    
+    .detailContainer .row4{
+        bottom: -20px;
+    }
+    
+    .detailContainer .row4 p{
+        font-size: 3.8em;
+    }
+    
+    .wishlistContainer, .cartContainer{
+        width: 22em;
+        height: 28em;
+    }
+    
+    .wishlistContainer .row2 .wishlistItem .imageContainer, .cartContainer .row2 .cartItem .imageContainer{
+        width: 40%;
+    }
+    
+    .wishlistContainer .row2 .wishlistItem .itemDetail, .cartContainer .row2 .cartItem .itemDetail{
+        width: 54%;
+    }
+
+    .wishlistContainer .row3, .cartContainer .row4{
+        bottom: -25px;
+        font-size: 3.8em;
+    }
+    
+    .cartContainer .row3 button{
+        border-radius: 6px;
+        padding: 0.5em 0;
+    }
 }
 
 @media (max-width: 480px){
+    .greeting_container{
+        height: 16em;
+    }
+
+    .greeting_container .text_container h1, .heading{
+        font-size: 1em;
+    }
+    
+    .greeting_container .text_container p{
+        font-size: 0.7em;
+    }
+    
+    .greeting_container .moving_image_container .moving_image{
+        width: 18em; 
+    }
+
     .items{
-        padding: 0.8vw 0.8vw 2vw 0.8vw;
-        font-size: 0.8em;
-        border-radius: 10px;
+        font-size: 0.9em;
     }
     
     .items button{
-        margin-top: 1vw;
         padding: 2vw 4vw;
-        border-radius: 10px;
-        font-size: 0.7em;
+        font-size: 1em;
     }
 
     .footer_container{
-        font-size: 9px;
+        font-size: 10px;
     }
-
 }
 
 @media (max-width: 374px){
     svg{
-        width: 20px;
+        width: 1.4em;
     }
     
     .nav_container{
-        height: 50px;
-        padding: 0 18px;
+        height: 46px;
+        padding: 0 10px;
     }
     
     .brand_name p{
-        font-size: 22px;
+        font-size: 1.4em;
     }
     
     .nav_icons{
-        width: 120px;
+        width: 110px;
     }
     
     .nav_icons .outer_container{
@@ -1268,61 +1247,45 @@ hr{
 
     .menu_container{
         width: 200px;
-        height: 240px;
-        top: 54px;
+        height: 250px;
+        top: 50px;
         right: -240px;
     }
     
     .menu_container .menu{
         width: 200px;
-        height: 240px;
-        border-radius: 15px;
+        height: 250px;
+        border-radius: 10px;
     }
     
     .menu_container .menu ul li{
-        border-radius: 10px;
+        border-radius: 8px;
         height: 30px;
         margin: 12px 0;
         width: 110px;
     }
-    
+
     .menu_container .menu ul li p{
-        font-size: 10px;
+        font-size: 0.8em;
         letter-spacing: 2px;
     }
     
     .menu_container .menu_cancel{
+        width: 1.3em;
         top: 9px;
         right: 10px;
     }
 
     .video_container{
-        margin-top: 50px;
-    }
-
-    .greeting_container{
-        height: 50vw;
+        margin-top: 46px;
     }
     
-    .greeting_container .text_container{
-        width: 90vw;
-        margin: 3vw 0 3.4vw 0;
+    .video_container p{
+        font-size: 1.2em;
     }
     
-    .greeting_container .text_container h1, .heading{
-        font-size: 5vw;
-    }
-    
-    .greeting_container .text_container p{
-        font-size: 2.3vw;
-    }
-    
-    .greeting_container .moving_image_container .moving_image{
-        width: 55vw;
-    }
-
-    #productSection{
-        padding-top: 54px;
+    .video_container svg{
+        width: 1.8em;
     }
 }
 

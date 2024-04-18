@@ -109,15 +109,14 @@ label{
 .register{
     background: #eee;
     border-radius: 50% / 10%;
-    transform: translateY(22%);
+    transform: translateY(15%);
     transition: .8s ease-in-out;
     z-index: 2;
 }
 
 .register label{
-    /* color: #573b8a; */
     color: #240046;
-    transform: scale(0.6);
+    transform: scale(0.8);
 }
 
 #chk:checked~.register{
@@ -126,12 +125,12 @@ label{
 
 #chk:checked~.register label{
     transform: scale(1);
-    margin: 5% 0 5% 0;
+    margin: 0% 0 5% 0;
 }
 
 #chk:checked~.login label {
-    transform: scale(.6);
-    margin: 1% 0 12% 0;
+    transform: scale(.7);
+    margin: 1% 0 10% 0;
 }
 
 /*Button*/
@@ -141,7 +140,7 @@ label{
     margin: 1em auto 2.5em;
     color: #fff;
     background: #573b8a;
-    font-size: 1rem;
+    font-size: 1.2em;
     font-weight: bold;
     border: none;
     border-radius: 4px;
@@ -151,4 +150,33 @@ label{
 
 .form button:hover {
     background-color: #510ecf;
+}
+
+@media(max-width: 550px){
+    body{
+        font-size: 14px;
+    }
+
+    .form_main{
+        width: 300px;
+        height: 400px;
+    }
+
+    label{
+        font-size: 1.6em;
+    }
+    
+    .input{
+        height: 30px;
+    }
+
+    .register{
+        border-radius: 40% / 10%;
+        transform: translateY(17%);
+    }
+    
+    .form button {
+        height: 30px;
+        font-size: 0.9em;
+    }
 }
