@@ -2,14 +2,30 @@
 const loginForm = document.querySelector('.login .form');
 const registerForm = document.querySelector('.register .form');
 
+let userInput = loginForm.elements['txt'];
+let passInput = loginForm.elements['pswd'];
+userInput.addEventListener('keydown', function(event) {
+    // Check if the Enter key was pressed
+    if (event.key === 'Enter') {
+        // Prevent the default action
+        event.preventDefault();
+        passInput.focus();
+    }
+});
+
+passInput.addEventListener('keydown', function(event) {
+    // Check if the Enter key was pressed
+    if (event.key === 'Enter') {
+        // Prevent the default action
+        event.preventDefault();
+        loginForm.submit();
+    }
+});
+
 // Add a submit event listener to the login form
 loginForm.addEventListener('submit', function(event) {
     // Prevent the form from submitting normally
     event.preventDefault();
-
-    // Get the user input and password fields from the form
-    let userInput = this.elements['txt'];
-    let passInput = this.elements['pswd'];
 
     // Check if the username is empty
     if (!userInput.value) {
@@ -36,54 +52,85 @@ loginForm.addEventListener('submit', function(event) {
     window.location.href = '/Car_showroom/index.html';
 });
 
-// Select the login button and add a click event listener
-let button = document.querySelector('.login button');
-button.addEventListener('click', ()=>{
-    console.log("Clicked");
-})
+let ruserInput = registerForm.elements['txt'];
+let remailInput = registerForm.elements['email'];
+let rpassInput = registerForm.elements['pswd'];
+let rcpassInput = registerForm.elements['cpswd'];
+ruserInput.addEventListener('keydown', function(event) {
+    // Check if the Enter key was pressed
+    if (event.key === 'Enter') {
+        // Prevent the default action
+        event.preventDefault();
+        remailInput.focus();
+    }
+});
+remailInput.addEventListener('keydown', function(event) {
+    // Check if the Enter key was pressed
+    if (event.key === 'Enter') {
+        // Prevent the default action
+        event.preventDefault();
+        rpassInput.focus();
+    }
+});
+rpassInput.addEventListener('keydown', function(event) {
+    // Check if the Enter key was pressed
+    if (event.key === 'Enter') {
+        // Prevent the default action
+        event.preventDefault();
+        rcpassInput.focus();
+    }
+});
+rcpassInput.addEventListener('keydown', function(event) {
+    // Check if the Enter key was pressed
+    if (event.key === 'Enter') {
+        // Prevent the default action
+        event.preventDefault();
+        registerForm.submit();
+    }
+});
 
 // Add a submit event listener to the register form
 registerForm.addEventListener('submit', function(event) {
     // Prevent the form from submitting normally
     event.preventDefault();
 
-    // Get the user input, email, password and confirm password fields from the form
-    let userInput = this.elements['txt'];
-    let emailInput = this.elements['email'];
-    let passInput = this.elements['pswd'];
-    let cpassInput = this.elements['cpswd'];
-
     // Check if the username is empty
-    if (!userInput.value) {
+    if (!ruserInput.value) {
         alert('Username cannot be empty');
         return;
     }
 
+    if(ruserInput.value.includes(' ')){
+        alert('Username should not contain space!!');
+        ruserInput.value = '';
+        return;
+    }
+
     // Check if the email is valid
-    if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(emailInput.value)) {
+    if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(remailInput.value)) {
         alert('Please enter a valid email');
-        emailInput.value = '';
+        remailInput.value = '';
         return;
     }
 
     // Check if the password is less than or equal to 6 characters
-    if (passInput.value.length <= 6) {
+    if (rpassInput.value.length <= 6) {
         alert('Password should be more than 6 characters');
-        passInput.value = '';
-        cpassInput.value = '';
+        rpassInput.value = '';
+        rcpassInput.value = '';
         return;
     }
 
     // Check if the password and confirm password match
-    if (passInput.value !== cpassInput.value) {
+    if (rpassInput.value !== rcpassInput.value) {
         alert('Password and Confirm Password should be the same');
-        cpassInput.value = '';
+        rcpassInput.value = '';
         return;
     }
 
     // If validation passes, set a flag in local storage and redirect to the main page
     localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('username', userInput.value);
+    localStorage.setItem('username', ruserInput.value);
     window.location.href = '/Car_showroom/index.html';
 });
 
