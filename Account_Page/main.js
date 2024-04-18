@@ -12,13 +12,13 @@ userInput.addEventListener('keydown', function(event) {
         passInput.focus();
     }
 });
-
+let button = document.querySelector('.login .form button');
 passInput.addEventListener('keydown', function(event) {
     // Check if the Enter key was pressed
     if (event.key === 'Enter') {
         // Prevent the default action
         event.preventDefault();
-        loginForm.submit();
+        button.click();
     }
 });
 
@@ -80,12 +80,13 @@ rpassInput.addEventListener('keydown', function(event) {
         rcpassInput.focus();
     }
 });
+let rbutton = document.querySelector('.register .form button');
 rcpassInput.addEventListener('keydown', function(event) {
     // Check if the Enter key was pressed
     if (event.key === 'Enter') {
         // Prevent the default action
         event.preventDefault();
-        registerForm.submit();
+        button.click();
     }
 });
 
