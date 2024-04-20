@@ -10,6 +10,20 @@ let brand_color_2 = getComputedStyle(document.documentElement).getPropertyValue(
 let mode_left = getComputedStyle(document.documentElement).getPropertyValue('--mode_left');
 let video = document.querySelector('.video_container video');
 
+const preload = ()=>{
+    window.addEventListener('load',()=>{
+        console.log('loaded')
+        let preloader = document.querySelector('.preloader');
+        console.log(preloader);
+        preloader.style.setProperty('transform', 'translateY(-100%)');
+        preloader.style.setProperty('opacity', '0');
+        setTimeout(() => {
+            preloader.style.setProperty('display', 'none');
+        }, 300);
+    });
+};
+preload();
+
 let mode = localStorage.getItem('mode');
 function theme_margin(){
     if(!mode){

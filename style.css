@@ -47,6 +47,74 @@ body{
     --heroHeight: 722px;
 }
 
+.preloader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--primary_color_1);
+    color: var(--primary_color_2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+    transition: all 0.5s ease-in-out;
+    gap: 1em;
+}
+
+.preloader p{
+    font-family: 'Zen Dots', sans-serif;
+    font-size: 1.5em;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    z-index: 1;
+    transform: translateX(-50%);
+}
+  
+.loader::before, 
+.loader::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+    animation: rotate92523 2s infinite cubic-bezier(0.77, 0, 0.175, 1);
+}
+  
+.loader::before {
+    background-color: #75e2ff;
+}
+  
+.loader::after {
+    background-color: #ff8496;
+    animation-delay: 1s;
+}
+  
+@keyframes rotate92523 {
+    0%, 100% {
+        left: 35px;
+    }
+  
+    25% {
+        transform: scale(.3);
+    }
+  
+    50% {
+        left: 0%;
+    }
+  
+    75% {
+        transform: scale(1);
+    }
+}
+
 svg{
     width: 1.4em;
 }
