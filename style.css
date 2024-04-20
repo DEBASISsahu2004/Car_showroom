@@ -574,6 +574,11 @@ main, footer{
     line-height: 2em;
 }
 
+.footer_container .row2 .normalText:hover{
+    color: var(--brand_color_1);
+    transition: all 0s ease-in-out;
+}
+
 .footer_container .row3 .connect{
     background-color: white;
     display: flex;
