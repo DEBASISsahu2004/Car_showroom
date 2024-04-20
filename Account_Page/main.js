@@ -49,7 +49,7 @@ loginForm.addEventListener('submit', function(event) {
     // If validation passes, set a flag in local storage and redirect to the main page
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('username', userInput.value);
-    window.location.href = '/index.html';
+    window.location.href = '../index.html';
 });
 
 let ruserInput = registerForm.elements['txt'];
@@ -132,7 +132,7 @@ registerForm.addEventListener('submit', function(event) {
     // If validation passes, set a flag in local storage and redirect to the main page
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('username', ruserInput.value);
-    window.location.href = '/index.html';
+    window.location.href = '../index.html';
 });
 
 // Initialize an array to keep track of the visibility state of password fields

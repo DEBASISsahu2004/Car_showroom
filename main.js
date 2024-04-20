@@ -1164,12 +1164,14 @@ function log(){
     } else {
         signup.innerHTML = 'Log in';
         navQuote.innerHTML = `<span>C</span>ar<span>M</span>ania`;
+        localStorage.removeItem('username');
         console.log('User has not logged in');
     }
 }
 
 let signup = document.querySelector('.menu_container .signup');
-signup.addEventListener('click',()=>{
+let signli = document.querySelector('.menu_container .signli');
+signli.addEventListener('click',()=>{
     if(signup.innerHTML === 'Log in'){
         window.location.href = 'Account_Page/index.html';
     }else{

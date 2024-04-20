@@ -837,6 +837,10 @@ hr{
     align-items: center;
 }
 
+.wishlistContainer .row2 svg, .cartContainer .row2 svg{
+    fill: var(--primary_color_2);
+}
+
 .wishlistContainer .row2 svg:hover, .cartContainer .row2 svg:hover{
     transition: all 0.3s ease-in-out;
     cursor: pointer;
