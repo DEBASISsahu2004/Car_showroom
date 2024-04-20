@@ -760,7 +760,7 @@ function showAlert(message) {
     setTimeout(hideAlert, 1000);
 }
 function hideAlert() {
-    alertDialog.style.transform = 'translateX(120%)'; 
+    alertDialog.style.transform = 'translateX(100%)'; 
     setTimeout(() => {
         alertDialog.style.display = 'none'; 
     }, 520);

@@ -22,6 +22,38 @@ passInput.addEventListener('keydown', function(event) {
     }
 });
 
+let alertDialog = document.createElement('div');
+alertDialog.style.position = 'fixed';
+alertDialog.style.top = '100px';
+alertDialog.style.backgroundColor = 'rgb(16, 213, 16)';
+alertDialog.style.color = 'white';
+alertDialog.style.padding = '10px 20px';
+alertDialog.style.borderRadius = '10px';
+alertDialog.style.fontFamily = "'Poppins', sans-serif";
+alertDialog.style.fontWeight = '600';
+alertDialog.style.boxShadow = '0px 0px 20px black';
+alertDialog.style.border = 'none';
+alertDialog.style.zIndex = '1000';
+alertDialog.style.right = '10px'; 
+alertDialog.style.transform = 'translateX(100%)'; 
+alertDialog.style.transition = 'transform 0.5s';
+alertDialog.style.display = 'none';
+document.body.appendChild(alertDialog);
+function showAlert(message) {
+    alertDialog.textContent = message;
+    alertDialog.style.display = 'block'; 
+    setTimeout(() => {
+        alertDialog.style.transform = 'translateX(0)'; 
+    }, 0);
+    setTimeout(hideAlert, 2000);
+}
+function hideAlert() {
+    alertDialog.style.transform = 'translateX(100%)'; 
+    setTimeout(() => {
+        alertDialog.style.display = 'none'; 
+    }, 520);
+}
+
 // Add a submit event listener to the login form
 loginForm.addEventListener('submit', function(event) {
     // Prevent the form from submitting normally
@@ -29,27 +61,33 @@ loginForm.addEventListener('submit', function(event) {
 
     // Check if the username is empty
     if (!userInput.value) {
-        alert('Username cannot be empty');
+        // alert('Username cannot be empty');
+        showAlert('Username cannot be empty');
         return;
     }
 
     if(userInput.value.includes(' ')){
-        alert('Username should not contain space!!');
+        // alert('Username should not contain space!!');
+        showAlert('Username should not contain space!!');
         userInput.value = '';
         return;
     }
 
     // Check if the password is less than or equal to 6 characters
     if (passInput.value.length <= 6) {
-        alert('Password should be more than 6 characters');
+        // alert('Password should be more than 6 characters');
+        showAlert('Password should be more than 6 characters');
         passInput.value = '';
         return;
     }
     
     // If validation passes, set a flag in local storage and redirect to the main page
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('username', userInput.value);
-    window.location.href = '../index.html';
+    showAlert('Logged in successfully!');
+    setTimeout(() => {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('username', userInput.value);
+        window.location.href = '/index.html';
+    }, 2200);
 });
 
 let ruserInput = registerForm.elements['txt'];
@@ -97,26 +135,30 @@ registerForm.addEventListener('submit', function(event) {
 
     // Check if the username is empty
     if (!ruserInput.value) {
-        alert('Username cannot be empty');
+        // alert('Username cannot be empty');
+        showAlert('Username cannot be empty');
         return;
     }
 
     if(ruserInput.value.includes(' ')){
-        alert('Username should not contain space!!');
+        // alert('Username should not contain space!!');
+        showAlert('Username should not contain space!!');
         ruserInput.value = '';
         return;
     }
 
     // Check if the email is valid
     if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(remailInput.value)) {
-        alert('Please enter a valid email');
+        // alert('Please enter a valid email');
+        showAlert('Please enter a valid email');
         remailInput.value = '';
         return;
     }
 
     // Check if the password is less than or equal to 6 characters
     if (rpassInput.value.length <= 6) {
-        alert('Password should be more than 6 characters');
+        // alert('Password should be more than 6 characters');
+        showAlert('Password should be more than 6 characters');
         rpassInput.value = '';
         rcpassInput.value = '';
         return;
@@ -124,15 +166,19 @@ registerForm.addEventListener('submit', function(event) {
 
     // Check if the password and confirm password match
     if (rpassInput.value !== rcpassInput.value) {
-        alert('Password and Confirm Password should be the same');
+        // alert('Password and Confirm Password should be the same');
+        showAlert('Password and Confirm Password should be the same');
         rcpassInput.value = '';
         return;
     }
 
     // If validation passes, set a flag in local storage and redirect to the main page
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('username', ruserInput.value);
-    window.location.href = '../index.html';
+    showAlert("User registered successfully");
+    setTimeout(() => {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('username', ruserInput.value);
+        window.location.href = '/index.html';
+    }, 2200);
 });
 
 // Initialize an array to keep track of the visibility state of password fields
