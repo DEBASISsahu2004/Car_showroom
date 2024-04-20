@@ -1,4 +1,5 @@
 // Retrieve CSS custom property values for colors and layout settings, and select the video element
+AOS.init();
 let primary_color_1 = getComputedStyle(document.documentElement).getPropertyValue('--primary_color_1');
 let primary_color_2 = getComputedStyle(document.documentElement).getPropertyValue('--primary_color_2');
 let secondary_color_1 = getComputedStyle(document.documentElement).getPropertyValue('--secondary_color_1');
@@ -600,7 +601,7 @@ const prod_loader=(products,html_ele, brand)=>{
             rs = 'cr'
         }
         html += `
-        <div class="items ${brand}" id="${product.uid}">
+        <div data-aos="fade-up" class="items ${brand}" id="${product.uid}">
             <div class="image_container">
                 <img src="${product.image1}" alt="${product.name}">
             </div>
