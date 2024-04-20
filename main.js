@@ -1197,3 +1197,15 @@ signli.addEventListener('click',()=>{
 });
 
 window.onload = log;
+
+function addClickListener(elements) {
+    elements.forEach(element => {
+        element.addEventListener('click', function() {
+            window.location.href = 'error.html';
+        });
+    });
+}
+let footerlinks = document.querySelectorAll('.footer_container .row2');
+let footerlink2 = document.querySelectorAll('.footer_container .row3 svg');
+addClickListener(footerlinks);
+addClickListener(footerlink2);

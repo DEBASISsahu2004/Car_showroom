@@ -541,6 +541,7 @@ main, footer{
     padding: 0 3vw;
     color: var(--primary_color_2);
     transition: all 0.3s ease-in-out;
+    user-select: none;
 }
 
 .footer_container .title{
@@ -550,6 +551,7 @@ main, footer{
 
 .footer_container .normalText{
     font-size: 0.9em;
+
 }
 
 .footer_container .row{
@@ -577,6 +579,7 @@ main, footer{
 .footer_container .row2 .normalText:hover{
     color: var(--brand_color_1);
     transition: all 0s ease-in-out;
+    cursor: pointer;
 }
 
 .footer_container .row3 .connect{
