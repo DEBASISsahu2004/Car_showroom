@@ -1207,5 +1207,7 @@ function addClickListener(elements) {
 }
 let footerlinks = document.querySelectorAll('.footer_container .row2');
 let footerlink2 = document.querySelectorAll('.footer_container .row3 svg');
+let menuItem = document.querySelectorAll('.menu_container .menuItem');
 addClickListener(footerlinks);
 addClickListener(footerlink2);
+addClickListener(menuItem);
