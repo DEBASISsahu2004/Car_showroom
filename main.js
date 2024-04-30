@@ -13,9 +13,7 @@ let video = document.querySelector('.video_container video');
 
 const preload = ()=>{
     window.addEventListener('load',()=>{
-        console.log('loaded')
         let preloader = document.querySelector('.preloader');
-        console.log(preloader);
         preloader.style.setProperty('transform', 'translateY(-100%)');
         preloader.style.setProperty('opacity', '0');
         setTimeout(() => {
